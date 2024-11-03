@@ -34,13 +34,14 @@
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav ms-auto"> <!-- Cambié 'mr-auto' por 'ms-auto' -->
-                    {% if user.is_authenticated %}
+                    {% if user.is_authenticated %} <!-- Si has hecho login -->
+                      <a class="nav-item nav-link" href="{% url 'post-create'%}">New Post</a>
                       <a class="nav-item nav-link" href="{% url 'profile'%}">Profile</a>
                       <form action="{% url 'logout' %}" method="post" style="display: inline;">
                           {% csrf_token %}
                           <button type="submit" class="nav-item nav-link btn btn-link">Log Out</button>
                       </form>
-                    {% else %}  
+                    {% else %}  <!-- Si no has iniciado sesion -->
                       <a class="nav-item nav-link" href="{% url 'login'%}">Login</a>
                       <a class="nav-item nav-link" href="{% url 'register'%}">Register</a>
                     {% endif %}
